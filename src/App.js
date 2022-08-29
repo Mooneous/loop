@@ -18,19 +18,25 @@ function App() {
 	];
 	let [Active, setActive] = useState(0);
 	const path = process.env.PUBLIC_URL;
+	const len = 8;
 	const list = useRef(null);
 
 	const prev = () => {
 		const lastEl = list.current.lastElementChild;
 		list.current.prepend(lastEl);
-		setActive(Active === 0 ? (Active = 8 - 1) : --Active);
+		setActive(Active === 0 ? (Active = len - 1) : --Active);
 	};
 
 	const next = () => {
 		const firstEl = list.current.firstElementChild;
 		list.current.append(firstEl);
-		setActive((Active) => (Active === 8 - 1 ? (Active = 0) : ++Active));
+		setActive((Active) => (Active === len - 1 ? (Active = 0) : ++Active));
 	};
+
+	useEffect(() => {
+		const lastEl = list.current.lastElementChild;
+		list.current.prepend(lastEl);
+	}, []);
 
 	useEffect(() => {
 		console.log(Active);
@@ -46,6 +52,21 @@ function App() {
 						<li key={idx} className={activeClass}>
 							<div className='inner'>
 								<img src={path + '/img/' + item.pic} alt={item.title} />
+								<div className='txtActive'>
+									<div className='upper'>
+										<p>{item.title}</p>
+									</div>
+									<div className='lower'>
+										<p>{item.subTitle}</p>
+									</div>
+								</div>
+
+								<div className='txtThumb'>
+									<p>
+										{item.title} <br />
+										{item.subTitle}
+									</p>
+								</div>
 							</div>
 						</li>
 					);
