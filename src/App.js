@@ -40,8 +40,10 @@ function App() {
 		<main>
 			<ul className='list' ref={list}>
 				{data.map((item, idx) => {
+					let activeClass = '';
+					Active === idx && (activeClass = 'on');
 					return (
-						<li key={idx}>
+						<li key={idx} className={activeClass}>
 							<div className='inner'>
 								<img src={path + '/img/' + item.pic} alt={item.title} />
 							</div>
