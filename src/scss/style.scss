@@ -90,6 +90,10 @@ main {
 			left: calc($initPos + $wid * 4);
 			transition-delay: 0.4s;
 		}
+		&:nth-of-type(8) {
+			left: calc($initPos + $wid * 5);
+			transition-delay: 0.5s;
+		}
 	}
 
 	button {

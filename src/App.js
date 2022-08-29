@@ -14,7 +14,7 @@ function App() {
 		{ title: 'WINDY', subTitle: 'MOUNTAIN', pic: 'pic5.jpg' },
 		{ title: 'DIMMED', subTitle: 'LANDSCAPE', pic: 'pic6.jpg' },
 		{ title: 'SUNSET', subTitle: 'GRASSLAND', pic: 'pic7.jpg' },
-		// { title: 'LAPPING', subTitle: 'SEA WAVES', pic: 'pic8.jpg' },
+		{ title: 'LAPPING', subTitle: 'SEA WAVES', pic: 'pic8.jpg' },
 	];
 	let [Active, setActive] = useState(0);
 	const path = process.env.PUBLIC_URL;
@@ -23,13 +23,13 @@ function App() {
 	const prev = () => {
 		const lastEl = list.current.lastElementChild;
 		list.current.prepend(lastEl);
-		setActive(Active === 0 ? (Active = 7 - 1) : --Active);
+		setActive(Active === 0 ? (Active = 8 - 1) : --Active);
 	};
 
 	const next = () => {
 		const firstEl = list.current.firstElementChild;
 		list.current.append(firstEl);
-		setActive((Active) => (Active === 7 - 1 ? (Active = 0) : ++Active));
+		setActive((Active) => (Active === 8 - 1 ? (Active = 0) : ++Active));
 	};
 
 	useEffect(() => {
