@@ -17,8 +17,40 @@ function App() {
 		//{ title: 'LAPPING', subTitle: 'SEA WAVES', pic: 'pic8.jpg' },
 	];
 	const path = process.env.PUBLIC_URL;
+	const list = useRef(null);
 
-	return <main></main>;
+	const prev = () => {
+		const lastEl = list.current.lastElementChild;
+		list.current.prepend(lastEl);
+	};
+
+	const next = () => {
+		const firstEl = list.current.firstElementChild;
+		list.current.append(firstEl);
+	};
+
+	return (
+		<main>
+			<ul className='list' ref={list}>
+				{data.map((item, idx) => {
+					return (
+						<li key={idx}>
+							<div className='inner'>
+								<img src={path + '/img/' + item.pic} alt={item.title} />
+							</div>
+						</li>
+					);
+				})}
+			</ul>
+
+			<button className='prev' onClick={prev}>
+				prev
+			</button>
+			<button className='next' onClick={next}>
+				next
+			</button>
+		</main>
+	);
 }
 
 export default App;
